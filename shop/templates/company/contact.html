@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mangovodo | Contact us{% endblock %}
+
+{% block content %}
+<div class='title'>
+    <h1>Contact us</h1>
+</div>
+<div class="contact-wrapper">
+    <div class="contact-form">
+        <div class="text">
+            Send us an email when you need an assistance,
+            <br> found a problem or have a suggestion.
+            <br> We love to hear from our customers and take
+            <br> your feedback to improve our operational quality.
+        </div>
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="text">Message</label></td>
+                    <td><textarea name="text" id="text" cols="32" rows="8"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Send"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

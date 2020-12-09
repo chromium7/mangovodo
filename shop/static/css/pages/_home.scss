@@ -1,0 +1,155 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+
+
+.body {
+    position: relative;
+    overflow: hidden;
+
+    .title {
+        text-align:center;
+        margin-top: 5%;
+
+        .subtitle {
+            font-family: $font-body;
+            font-size: 1.2em;
+        }
+    }
+
+    .wrapper {
+        position: relative;
+        overflow: visible;
+        width: 100%;
+        transform: translateX(-100vw);
+    }
+    .carousell {
+        position: relative;
+        overflow: visible;
+        width: 100%;
+        display: flex;
+        height: auto;
+        margin-top: 10%;
+        transition: transform .5s ease-in-out;
+
+        .card {
+            position: relative;
+            text-align: center;
+
+            img {
+                margin: 2vw 10vw;
+                width: 80vw;
+                height: auto;
+            }
+
+            .card-title {
+                font-size: 1.8em;
+            }
+
+            .button {
+                font-size: 1.2em;
+                padding: 1% 5%;
+                width: 40vw;
+                margin: auto;
+                margin-top: 5vw;
+            }
+
+            .left {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent; 
+                
+                border-right:10px solid $brown-dark; 
+                position: absolute;
+                top: 25%;
+                left: 5%;
+            }
+
+            .right {
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                
+                border-left: 10px solid $brown-dark;
+                position: absolute;
+                top: 25%;
+                right: 5%;
+            }
+
+            &.card-1 {
+            }
+
+            &.card-2 {
+
+                .card-title {
+                    background: $orange-gradient;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+
+            &.card-3 {
+            }
+        }
+
+    }
+
+    @media only screen and (min-device-width:768px) {
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        padding-bottom: 18vh;
+
+        .title {
+            margin-top: 15vh;
+        }
+
+        .wrapper {
+            transform: none;
+        }
+
+        .carousell {
+            height: auto;
+            width: 100vw;
+            margin-top: 3vh;
+            justify-content: space-between;
+
+            .card {
+                width: fit-content;
+
+                .left, .right {
+                    display: none;
+                }
+
+                img {
+                    margin: 0;
+                }
+
+                .button {
+                    width: 70%;
+                    margin-top: 2vh;
+                }
+
+                &.card-2 {
+                    img {
+                        width: 30vw;
+                    }
+                }
+
+                &.card-1, &.card-3 {
+                    flex: 1;
+
+                    img {
+                        width: 21vw;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock  %}
+
+{% block content %}
+<div class="title">
+    <h1>Checkout</h1>
+</div>
+
+<div class="order-wrapper">
+
+    <div class="order-detail">
+        <h3>Your account details:</h3>
+        <div class="order-buyer">
+            <h2>{{ request.user.username }}</h2>
+            <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+        </div>
+        <form action="{% url 'orders:order_create' %}" method="post" class="order-form">
+            {{ form }}
+
+            <div>
+                <a href="{% url 'accounts:user_profile' %}">Add a new address</a>
+            </div>
+
+            <p><input type="submit" value="Proceed to payment"></p>
+            {% csrf_token %}
+        </form>
+    </div>
+
+    <div class="order-info">
+        <h3>Your order:</h3>
+        <ul>
+            {% for item in cart %}
+            <li>
+                {{ item.quantity }}x {{ item.product.name }}
+                <span class="price">${{ item.total_price|floatformat:2 }}</span>
+            </li>
+            {% endfor %}
+            {% if cart.coupon %}
+                <li>
+                    {% with code=cart.coupon discount=cart.coupon.discount%}
+                        "{{ code }}" ({{ discount }}% off)
+                        <span class="price neg">- ${{ cart.get_discount|floatformat:2 }}</span>
+                    {% endwith %}
+                </li>
+            {% endif %}
+            <p class="total">Total: <span class="price">${{ cart.get_total_price_after_discount|floatformat:2 }}</span></p>
+            <form action="{% url 'coupons:apply' %}" method="post">
+                {% csrf_token %}
+                <div>{{ coupon_form.code.label }}</div>
+                <div>{{ coupon_form.code }}</div>
+                <div><input type="submit" value="Apply"></div>
+            </form>
+        </ul>
+    </div>
+</div>
+
+<script>
+    const addressChoices = document.querySelectorAll('input[type="radio"]');
+    addressChoices.forEach(choice => choice.addEventListener('click', (e)=> {
+        e.target.parentElement.parentElement.style.background = '#F5BB08';
+    }));
+</script>
+{% endblock  %}

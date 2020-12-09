@@ -1,0 +1,31 @@
+{% for item in cart %}
+    {% with product=item.product %}
+        <div class="cart-product-preview">
+            <div>
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+            </div>
+            <div class="context">
+                <h3>{{ product.name }}</h3>
+                <p>${{ item.price }}</p>
+                <div class="inputs">
+                    <form action="{% url 'cart:cart_add' product.id %}" method="post" class='form-add'>
+                        Qty: 
+                        {{ item.update_quantity_form.quantity }}
+                        {{ item.update_quantity_form.override }}
+                        {% csrf_token %}
+                        <input type="submit" value="Update">
+                    </form>
+                    <form action="{% url 'cart:cart_remove' product.id %}" method="post" class='form-remove'>
+                        {% csrf_token %}
+                        <input type="submit" value="Remove">
+                    </form>
+                </div>
+                <p>Product total: ${{ item.total_price }}</p>
+            </div>
+        </div>
+    {% endwith %}
+{% empty %}
+<p>You dont have anything in your shopping cart yet.</p>
+{% endfor %}

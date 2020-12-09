@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Payment Success
+{% endblock  %}
+
+{% block content %}
+
+<div class="title">
+    <h1>Payment Successful</h1>
+</div>
+
+<div class="payment-wrapper">
+    <img src="{% static 'img/avocado.png' %}" alt="Mangovodo">
+    <div>
+        <p>
+        Thank you for your purchases! <br>
+        We hope that you have a pleasant experience shopping with us! <br>
+        We appreciate any feedback that you have and you can drop your comments <a href="{% url 'shop:about' %}">here</a>.
+        </p>
+        <p>Attached below is the invoice of your order. <br>
+        <a href="{% url 'payment:receipt' order.id %}">Receipt</a>
+        </p>
+    </div>
+    <img src="{% static 'img/mango.png' %}" alt="Mangovodo">
+</div>
+
+{% endblock  %}

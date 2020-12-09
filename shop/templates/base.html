@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <div class="logo-img"></div>
+    </div>
+    <div class="menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="header">
+        <div class="subheader">
+            Mangovodo
+            <div class="close">&times;</div>
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'shop:listing' 'all' %}">Products</a></li>
+            <li class='search'>
+                Search
+                <form action="{% url "shop:search" %}" method="get">
+                    {{ search_form.query }}
+                </form>
+            </li>
+        </ul>
+        <div class="filler"></div>
+        <ul>
+            <li><a href="{% url 'shop:contact' %}">Contact</a></li>
+            <li><a href="{% url 'shop:about' %}">About</a></li>
+            <li><a href="#" class='cart'>Cart ({{ cart|length }})</a></li>
+            {% if request.user.is_authenticated %}
+            <div class="profile-menu">
+                <div><a href="{% url 'accounts:user_profile' %}">Profile</a></div>
+                <div><a href="{% url 'shop:logout' %}?next=/">Sign out</a></div>
+            </div>
+            <li>
+                <a href="#" class='profile-button'>{{ user.username }}</a>
+            </li>
+            {% else %}
+            <li><a href="{% url 'shop:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="cart-overlay"></div>
+    <div class="cart-html">
+        {% include 'cart/cart.html' %}
+    </div>
+
+    <div class="body">
+    {% block content %}
+    
+    {% endblock %}
+    <div class="footer">
+        <ul class="left">
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
+            <li><a href="https://www.twitter.com/">Twitter</a></li>
+        </ul>
+        <div class="right">
+            &copy; Mangovodo 2020
+        </div>
+    </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

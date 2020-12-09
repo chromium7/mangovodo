@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// Font variables
+$font-body: 'Itim', Arial, sans-serif;
+$font-title: 'CreamCake', serif;
+
+// Colors
+
+$green-primary: #778811;
+$green-secondary: #A6B425;
+$green-light: #DCD540;
+$green-gradient: linear-gradient(90deg, $green-primary 0%, $green-secondary 100%);
+
+$orange-primary: #F5BB08;
+$orange-dark: #CA8505;
+$orange-gradient: linear-gradient(90deg, $orange-primary 0%, $green-primary 100%);
+
+$brown-primary: #694b17;
+$brown-light: #A5802F;
+$brown-dark: #5E491F;
+
+$light-primary: #EBE3EF;
+$light-secondary: #ECF2F5;

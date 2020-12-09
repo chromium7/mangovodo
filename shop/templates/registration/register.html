@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangovodo | Register</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="register-wrapper">
+        <div class="register-container">
+            <div class="logo">
+                <a href="/"><img src="{% static 'img/logo-or.svg' %}" alt="Mangovodo"></a>
+            </div>
+            <div class="title">
+                <div class="subtitle">Register</div>
+                <div class='log'>Already have an account? <a href="{% url 'shop:login' %}">Login</a></div>
+            </div>
+            <form action="{% url "shop:register" %}" method="post">
+                <div>{{ user_form.username.label_tag }}</div>
+                <div>{{ user_form.username }}</div>
+                <table>
+                    <tr>
+                        <td>{{ user_form.first_name.label_tag }}</td>
+                        <td>{{ user_form.last_name.label_tag }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ user_form.first_name }}</td>
+                        <td>{{ user_form.last_name }}</td>
+                    </tr>
+                </table>
+                <div>{{ user_form.email.label_tag }}</div>
+                <div>{{ user_form.email }}</div>
+                <div>{{ user_form.password.label_tag }}</div>
+                <div>{{ user_form.password }}</div>
+                <div>{{ user_form.password2.label_tag }}</div>
+                <div>{{ user_form.password2 }}</div>
+
+                <h2>Shipping address detail</h2>
+                <div>{{ address_form.street.label_tag }}</div>
+                <div>{{ address_form.street }}</div>
+                <div>{{ address_form.country.label_tag }}</div>
+                <div>{{ address_form.country }}</div>
+                <div>{{ address_form.state.label_tag }}</div>
+                <div>{{ address_form.state }}</div>
+                <div>{{ address_form.code.label_tag }}</div>
+                <div>{{ address_form.code }}</div>
+                <div>{{ user_form.notify }}{{ user_form.notify.label }}</div>
+                {% csrf_token %}
+                <div><input type="submit" value="Register"></div>
+            </form>
+        </div>
+        <div class="register-image">
+            <img src="{% static 'img/register-img.jpg' %}" alt="Mangovodo"> 
+        </div>
+        <div class="footer">
+            <ul class="left">
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+            <div class="right">
+                &copy; Mangovodo 2020
+            </div>
+        </div>
+    </div>
+</body>
+</html>

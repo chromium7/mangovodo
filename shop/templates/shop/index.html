@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mangovodo{% endblock %}
+
+{% block content %}
+        <div class='title'>
+            <h1>Mangovodo</h1>
+            <br>
+            <span class="subtitle">
+                The marketplace to satisfy your 
+                <br>
+                <span class="orange">mango</span>
+                and <span class="green">avocado</span>
+                cravings.
+            </span>
+        </div>
+        <div class="wrapper">
+            <div class="carousell">
+                <div class="card card-1">
+                    <img src="{% static 'img/avocado.png' %}" alt="Avocado">
+                    <div class='card-title green'>Avocado</div>
+                    <a href="{% url 'shop:listing' 'avocado' %}" class="button">Shop Avocado</a>
+                    <div class="right"></div>
+                </div>
+                <div class="card card-2 active">
+                    <img src="{% static 'img/mango-avocado2.png' %}" alt="Mangovodo">
+                    <div class='card-title'>Mango & Avocado</div>
+                    <a href="{% url 'shop:listing' 'all' %}" class="button">Shop All</a>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <div class="card card-3">
+                    <img src="{% static 'img/mango.png' %}" alt="Mango">
+                    <div class='card-title orange'>Mango</div>
+                    <a href="{% url 'shop:listing' 'mango' %}" class="button">Shop Mango</a>
+                    <div class="left"></div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

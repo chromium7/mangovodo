@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangovodo | Login</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-image">
+            <img src="{% static 'img/login-img2.jpg' %}" alt="Mangovodo">
+            <p>Mangovodo</p>
+        </div>
+        <div class="login-container">
+            <div class="login-form">
+                <div class="title">
+                    <a href="/">
+                        <img src="{% static 'img/logo-gr.svg' %}" alt="Mangovodo">
+                        <h1>Mangovodo</h1>
+                    </a>
+                </div>
+                <div class="subtitle">Login</div>
+                <form action="{% url 'shop:login' %}" method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <p><input type="submit" value="Log-in"></p>
+                </form>
+                <p>Don't have an account? <br><a href="{% url 'shop:register' %}">Sign up now.</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

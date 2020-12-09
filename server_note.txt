@@ -1,0 +1,40 @@
+STARTING SERVERS IN DEVELOPMENT (using cygwin in Windows)
+
+1. postgresql
+    - Make sure Windows postgresql is shut down
+        > In command prompt (run as admin)
+        > pg_ctl -D "C:\Program Files\PostgreSQL\13\data" stop
+    - Open cygwin terminal
+        > cd into cygwin64 directory
+        > /usr/sbin/pg_ctl -D /usr/share/postgresql/data -l log.txt start
+        > psql -U postgres     or     psql -U mangovodo
+
+2. celery
+    - Open cygwin terminal
+    - cd into project directory
+    - Activate virtual environment
+        > . env/bin/activate
+    - Export django settings
+        > export DJANGO_SETTINGS_MODULE=django_project.settings.development
+    - Run celery
+        > celery -A django_project worker -l info
+    (Optional)
+    - Run flower
+        > celery -A django_project flower
+
+3. manage.py server
+    - Open cygwin terminal
+    - cd into project directory
+    - Activate virtual environment
+        > . env/bin/activate
+    - Export django settings
+        > export DJANGO_SETTINGS_MODULE=django_project.settings.development
+    - Run manage.py
+        > python manage.py runserver
+
+4. redis
+    - Open cygwin terminal
+    - cd into redis directory
+        > cd /redis-6.0.9/src/
+    - run redis
+        > ./redis-server.exe ../redis.conf

@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.button {
+    display: block;
+    border: 1px solid $green-light;
+    background-color: $brown-dark;
+    color: $light-primary;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+}

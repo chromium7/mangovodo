@@ -1,0 +1,41 @@
+
+.contact-wrapper{
+
+    @media only screen and (min-device-width:768px) {
+        width: auto;
+        margin: 5vh 5vw;
+        background: url('../img/abstract-bg.svg');
+        background-size: cover;
+        height: 80vh;
+        font-size: 1.1em;
+        color: $light-primary;
+        
+        .contact-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .text {
+            text-align:center;
+            margin: 5vh 0;
+        }
+
+        table {
+            margin: 0 auto;
+            padding: 2em;
+            border-spacing: 2;
+
+            td {
+                padding-right: 1.4em;
+            }
+
+            input[type='submit'] {
+                color: $light-primary;
+                background: $brown-dark;
+            }
+        }
+    }
+
+}

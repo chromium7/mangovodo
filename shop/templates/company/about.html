@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mangovodo | About us{% endblock %}
+
+{% block content %}
+
+<div class="title">
+    <h1>About us</h1>
+</div>
+
+<div class="about-wrapper">
+    <section>
+        <div class="image">
+            <img src="{% static 'img/avocado-h-1.jpg' %}" alt="Fresh mangoes">
+        </div>
+        <div class="text">
+            <h3>High quality Indonesian hand-picked fruits</h3>
+            <p>Mangovodo uses fresh ingredients from our suppliers in East Java, Indonesia.
+                Each plant is treated with upmost care and given the best nutrients for their growth,
+                and to bring you the best possible products.
+                <br>
+                <a href="#">Browse our products.</a>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="text">
+            <h3>Mangovodo established since 1976</h3>
+            <p>Establsihed in 1976, Mangovodo has become the center marketplace for mango
+                and avocado products purchases. Since then, our mission has always been
+                to serve the best product in the market for our customers and to give them 
+                a pleasant experience while shopping.
+                We want to share the joy of consuming avocado and mangoes to the whole 
+                world and also help those that are in less fortunate area with our products.
+            </p>
+        </div>
+        <div class="image">
+            <img src="{% static 'img/mango-h-1.jpg' %}" alt="Mangovodo company">
+        </div>
+    </section>
+    <section>
+        <div class="image design">
+            <div class="front">
+                <img src="{% static 'img/rsz_wireframe.png' %}" alt="Mangovodo wireframe">
+            </div>
+            <div class="back">
+                <img src="{% static 'img/rsz_design.png' %}" alt="Mangovodo design">
+            </div>
+        </div>
+        <div class="text">
+            <h3>The Mangovodo Project</h3>
+            <p>
+                Mangovodo is a small e-commerce website project to hone my skills.
+                This website uses the following tools: 
+                <table>
+                    <tr>
+                        <td>django</td>
+                        <td>scss</td>
+                        <td>redis</td>
+                        <td>postgresql</td>
+                        <td>celery</td>
+                    </tr>
+                </table>
+                In this project, I practiced the followings:
+                <ul>
+                    <li>implement a responsive web design;</li>
+                    <li> set up a user account system that tracks their orders and purchases;</li>
+                    <li>add a custom middleware;</li>
+                    <li> set up asynchronous tasks;</li>
+                    <li> set up signals;</li>
+                    <li>set up mail system;</li>
+                    <li>generate a PDF from HTML;</li>
+                    <li>update the admin interface;</li>
+                    <li>and set up a payment system.</li>
+                </ul> 
+                <br>
+                <h5>Visit my github page for the source code for this website</h5>
+                <br>
+                <a href="#">http://bruh.com/</a>
+            </p>
+        </div>
+    </section>
+    <div class="title">
+        <h2>Connect with us</h2>
+    </div>
+    <section>
+        <div class="soc-image">
+            <a href="#">
+                <img src="{% static 'img/instagram.svg' %}" alt="Instagram">
+            </a>
+        </div>
+        <div class="soc-image">
+            <a href="#">
+                <img src="{% static 'img/twitter.svg' %}" alt="Twitter">
+            </a>
+        </div>
+        <div class="soc-image">
+            <a href="#">
+                <img src="{% static 'img/facebook.svg' %}" alt="Facebook">
+            </a>
+        </div>
+        <div class="soc-image">
+            <a href="#">
+                <img src="{% static 'img/email.svg' %}" alt="Email">
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

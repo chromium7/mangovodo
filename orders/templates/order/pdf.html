@@ -1,0 +1,45 @@
+<html>
+    <body>
+        <h1>Mangovodo</h1>
+        <p>
+            Invoice no. {{ order.id }}<br>
+            <span class="secondary">
+                {{ order.created|date:"M d, Y" }}
+            </span>
+        </p>
+
+        <h3>Bill to</h3>
+        <p>
+            {{ order.buyer.first_name }} {{ order.buyer.last_name }} <br>
+            {{ order.buyer.email }} <br>
+            {{ order.address.street }} <br>
+            {{ order.address.code }}, {{ order.address.state }}, {{ order.address.country }}
+        </p>
+
+        <h3>Items bought</h3>
+        <table>
+            <thead>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Cost</th>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr class="row{% cycle '1' '2' %}">
+                    <td>{{ item.product.name }}</td>
+                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.quantity }}</td>
+                    <td class="num">{{ item.get_cost }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
+            {% if order.paid %}Paid{% else %}Pending payment{% endif %}
+        </span>
+    </body>
+
+
+</html>

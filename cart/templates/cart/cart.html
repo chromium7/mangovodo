@@ -1,0 +1,21 @@
+<div class="cart-container">
+    <div class="subheader">
+        Your cart --{{ cart|length }} item{{ cart|length|pluralize }}
+        <div class="close">&times;</div>
+    </div>
+
+    <div class="cart-products">
+        {% include 'cart/detail.html' %}
+    </div>
+
+    <div class="total">
+        Total: 
+        <span>$ {{ cart.get_total_price|floatformat:2 }}</span>
+    </div>
+
+    {% if cart %}
+        <div class="checkout-container">
+            <a href="{% url 'orders:order_create' %}" class="checkout-button">Checkout</a>
+        </div>
+    {% endif %}
+</div>

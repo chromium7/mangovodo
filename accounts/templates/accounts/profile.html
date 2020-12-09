@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load profile_tags %}
+
+{% block title %}
+{{ user.username }}
+{% endblock  %}
+
+{% block content %}
+
+<div class="title">
+    <h1 style='opacity: 0;'>Profile</h1>
+</div>
+
+<div class="profile-wrapper">
+    <div class="left">
+        <h2>{{ user.username }}</h2>
+        <div class="details">
+            <h3>{{ user.first_name }}</h3>
+            <h3>{{ user.last_name }}</h3>
+            <p>{{ user.email }}</p>
+            <p>Joined since: {{ user.date_joined }}</p>
+            <p>Purchases made: {{ user|total_purchases }}</p>
+        </div>
+    </div>
+    <div class="right">
+        <ul class="profile-menu">
+            <li id="address-menu" class='active'>Addresses</li>
+            <li id="purchase-menu">Purchases</li>
+        </ul>
+        <div class="profile-container">
+            <div class="address-container cont-active">
+                <ul class='address-list'>
+                    {% for address in addresses %}
+                        <li>{{ address.street }}, {{ address.state }}, {{ address.country }} {{ address.code }}
+                        <a href="{% url 'accounts:delete_address' address.id %}" class='delete'>Delete</a>
+                        </li>
+                    {% empty %}
+                        <li> You have not registered any address yet.</li>
+                    {% endfor %}
+                </ul>
+                <button id="add-address">Add a new address</button>
+            </div>
+            <div class="purchases-container">
+                <ul class="sub-menu">
+                    <li id="pending-menu" class='active'>Pending</li>
+                    <li id="completed-menu">Completed</li>
+                </ul>
+                <div class="inner-purchases-container">
+                    <div class="pending-container cont-active">
+                        <ul class='address-list'>
+                            {% for purchase in purchases_pending %}
+                                <li>
+                                <h3>Order ID #{{ purchase.id }}</h3>
+                                <p>Purchase on <i>{{ purchase.created }}</i></p>
+                                <p>Sent to address: <i>{{ purchase.address }}</i></p>
+                                <table>
+                                    <thead>
+                                        <td>Product name</td>
+                                        <td>Quantity</td>
+                                        <td>Price</td>
+                                        <td>Total Price</td>
+                                    </thead>
+                                    {% for item in purchase.items.all %}
+                                        <tr>
+                                            <td>{{ item.product.name }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>${{ item.price }}</td>
+                                            <td>${{ item.get_cost }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% if purchase.coupon %}
+                                        <tr>
+                                            <td colspan="3">Subtotal</td>
+                                            <td>${{ purchase.total_cost|floatformat:2 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">Coupon ("{{ purchase.coupon.code }}", {{ purchase.discount }}% off)</td>
+                                            <td class='price neg'>-${{ purchase.get_discount|floatformat:2 }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    
+                                    <tr>
+                                        <td colspan="3">Total</td>
+                                        <td>${{ purchase.get_total_cost|floatformat:2 }}</td>
+                                    </tr>
+                                </table>
+                                <div class="button-container">
+                                    <a href="{% url 'accounts:pay_order' purchase.id %}" class="button">Pay now</a>
+                                    <a href="{% url 'accounts:cancel_order' purchase.id %}" class="button-cancel">Cancel order</a>
+                                </div>
+                                </li>
+                            {% empty %}
+                                <li>You don't have any pending purchases</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="completed-container">
+                        <ul class='address-list'>
+                            {% for purchase in purchases_paid %}
+                                <li>
+                                <h3>Order ID #{{ purchase.id }}</h3>
+                                <p>Purchase on <i>{{ purchase.created }}</i></p>
+                                <p>Sent to address: <i>{{ purchase.address }}</i></p>
+                                <table>
+                                    <thead>
+                                        <td>Product name</td>
+                                        <td>Quantity</td>
+                                        <td>Price</td>
+                                        <td>Total Price</td>
+                                    </thead>
+                                    {% for item in purchase.items.all %}
+                                        <tr>
+                                            <td>{{ item.product.name }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>${{ item.price }}</td>
+                                            <td>${{ item.get_cost }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% if purchase.coupon %}
+                                        <tr>
+                                            <td colspan="3">Subtotal</td>
+                                            <td>${{ purchase.total_cost|floatformat:2 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">Coupon ("{{ purchase.coupon.code }}", {{ purchase.discount }}% off)</td>
+                                            <td class='price neg'>-${{ purchase.get_discount|floatformat:2 }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    
+                                    <tr>
+                                        <td colspan="3">Total</td>
+                                        <td>${{ purchase.get_total_cost|floatformat:2 }}</td>
+                                    </tr>
+                                </table>
+                                <div class='purchase-completed'>Purchase completed</div>
+                                </li>
+                            {% empty %}
+                                <li>You don't have any completed purchases</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='form-container'>
+    <div class="address-form">
+        <h2>Add a new address</h2>
+        <form action="{% url 'accounts:add_address' %}" method="post">
+            {% csrf_token %}
+            {{ address_form }}
+            <input type="submit" value="Add address">
+        </form>
+    </div>
+    <div class="form-overlay"></div>
+</div>
+
+
+<script>
+
+const addressMenu = document.querySelector('#address-menu');
+const purchaseMenu = document.querySelector('#purchase-menu');
+const pendingMenu = document.querySelector('#pending-menu');
+const completedMenu = document.querySelector('#completed-menu');
+
+const addressContainer = document.querySelector('.address-container');
+const purchasesContainer = document.querySelector('.purchases-container');
+const pendingContainer = document.querySelector('.pending-container');
+const completedContainer = document.querySelector('.completed-container');
+
+addressMenu.addEventListener('click', () => {
+    addressMenu.classList.add('active');
+    purchaseMenu.classList.remove('active');
+    addressContainer.classList.add('cont-active');
+    purchasesContainer.classList.remove('cont-active');
+});
+
+purchaseMenu.addEventListener('click', () => {
+    addressMenu.classList.remove('active');
+    purchaseMenu.classList.add('active');
+    addressContainer.classList.remove('cont-active');
+    purchasesContainer.classList.add('cont-active');
+});
+
+pendingMenu.addEventListener('click', () => {
+    pendingMenu.classList.add('active');
+    completedMenu.classList.remove('active');
+    pendingContainer.classList.add('cont-active');
+    completedContainer.classList.remove('cont-active');
+});
+
+completedMenu.addEventListener('click', () => {
+    pendingMenu.classList.remove('active');
+    completedMenu.classList.add('active');
+    pendingContainer.classList.remove('cont-active');
+    completedContainer.classList.add('cont-active');
+});
+
+
+const addAddressBtn = document.querySelector('#add-address');
+const formContainer = document.querySelector('.form-container');
+const formOverlay = document.querySelector('.form-overlay');
+
+addAddressBtn.addEventListener('click', (e) => {
+    formContainer.classList.add('active');
+});
+
+formOverlay.addEventListener('click', (e) => {
+    formContainer.classList.remove('active');
+});
+
+
+</script>
+
+{% endblock  %}

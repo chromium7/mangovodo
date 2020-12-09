@@ -1,0 +1,5 @@
+.vscode
+venv/
+db.sqlite3
+django_project/settings/development.py
+django_project/settings/production.py

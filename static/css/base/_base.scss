@@ -1,0 +1,67 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+}
+
+
+h1 {
+  font-family: $font-title;
+  font-size: 4em;
+  padding: 0 .12em;
+  background: $orange-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+h2 {
+  font-family: $font-title;
+  font-size: 3em;
+  color: $orange-primary;
+  text-shadow: 1px 1px 0 $green-primary;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type='text'], input[type='password'], input[type='email'], textarea {
+  max-width: 100%;
+  padding: .2em .6em;
+  outline: none;
+}
+
+input[type='submit'], button {
+  background: $green-primary;
+  color: $light-primary;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: .4em .8em;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+      transform: translate(0, -.2em);
+      box-shadow: 0 0 10px 2px $light-primary;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+.errorlist {
+  color: red;
+}
