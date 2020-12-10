@@ -41,23 +41,6 @@ input[type='text'], input[type='password'], input[type='email'], textarea {
   outline: none;
 }
 
-input[type='submit'], button {
-  background: $green-primary;
-  color: $light-primary;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  font-size: 1em;
-  padding: .4em .8em;
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-      transform: translate(0, -.2em);
-      box-shadow: 0 0 10px 2px $light-primary;
-  }
-}
-
 ul {
   list-style-type: none;
 }
