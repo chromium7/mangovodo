@@ -86,8 +86,42 @@
                 }
             }
         }
-    }
+
+        .profile-menu {
+            position: relative;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            transition: all .4s ease;
     
+            div {
+                width: 100%;
+                height: 100%;
+                padding: 5% 10%;
+                border-top: 1px solid $green-secondary;
+                border-bottom: 1px solid $green-secondary;
+                
+                a {
+                    color: $light-primary;
+                    text-decoration: none;
+                }
+    
+                &:hover {
+                    background: rgba($color: #000000, $alpha: .3);
+                    
+                    a {
+                        color: $green-primary;
+                    }
+                }
+            }
+    
+            &.active {
+                height: 100%;
+                opacity: 1;
+            }
+        }
+    }
+
     &.active {
         transform: translateX(-100%);
     }
@@ -154,7 +188,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                opacity: 0;
                 pointer-events: none;
                 z-index: 2;
 
@@ -163,24 +196,11 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 100%;
-                    height: 100%;
-                    
-                    a {
-                        color: $light-primary;
-                        text-decoration: none;
-                    }
-
-                    &:hover {
-                        background: rgba($color: #000000, $alpha: .3);
-                        
-                        a {
-                            color: $green-primary;
-                        }
-                    }
+                    padding: 0;
                 }
 
                 &.active {
+                    height: 150px;
                     opacity: 1;
                     pointer-events: all;
                 }

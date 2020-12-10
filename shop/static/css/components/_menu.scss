@@ -1,13 +1,14 @@
 
 .menu {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 18vw;
     height: 18vw;
     background: $brown-dark;
     cursor: pointer;
+    z-index: 99;
 
     .line {
         width: 50%;

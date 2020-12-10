@@ -1,36 +1,42 @@
 
 .detail-wrapper {
+    margin: 3vh 5vw;
+
+    img {
+        display: block;
+        margin: auto;
+        width: 80%;
+    }
+
+    h4 {
+        margin-top: .7em;
+        margin-bottom: 1.4em;
+    }
+
+    .price {
+        font-size: 1.4em;
+        margin-bottom: .7em;
+    }
+    
+    .desc {
+        margin-top: .7em;
+    }
+
+    p {
+        margin-top: .7em;
+    }
 
     @media only screen and (min-device-width:768px) {
-        margin: 3vh 5vw;
-
         img {
             float: left;
             width: 35%;
             margin: 0 5%;
         }
-
-        h4 {
-            margin-top: .7em;
-            margin-bottom: 1.4em;
-        }
-
-        .price {
-            font-size: 1.4em;
-            margin-bottom: .7em;
-        }
-        
-        .desc {
-            margin-top: .7em;
-        }
-
-        p {
-            margin-top: .7em;
-        }
     }
 }
 
 .rec-title {
+    margin: 3vh 5vw;
 
     @media only screen and (min-device-width:768px) {
         width: 90%;
@@ -40,6 +46,31 @@
 }
 
 .recommendations {
+    margin: 3vh 5vw;
+
+    .item {
+        background: $light-secondary;
+        margin: 5vh auto;
+        padding: 20px 0;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba($color: #000000, $alpha: .4), 0 0 40px rgba($color: #000000, $alpha: .3);
+        text-align: center;
+        width: 90%;
+        transition: box-shadow .3s ease-in-out;
+        
+        img {
+            max-width: 100%;
+            height: 250px;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        &:hover {
+            box-shadow: 0 10px 20px rgba($color: $orange-dark, $alpha: .4), 0 0 40px rgba($color: $orange-dark, $alpha: .3);
+        }
+    }
 
     @media only screen and (min-device-width:768px) {
         width: 90%;
@@ -49,27 +80,8 @@
         margin: auto;
 
         .item {
-            background: $light-secondary;
             margin: 3vw 0;
-            padding: 20px 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba($color: #000000, $alpha: .4), 0 0 40px rgba($color: #000000, $alpha: .3);
-            text-align: center;
             width: 22%;
-            transition: box-shadow .3s ease-in-out;
-            
-            img {
-                max-width: 100%;
-                height: 250px;
-            }
-
-            p {
-                font-size: 1.2em;
-            }
-
-            &:hover {
-                box-shadow: 0 10px 20px rgba($color: $orange-dark, $alpha: .4), 0 0 40px rgba($color: $orange-dark, $alpha: .3);
-            }
         }
     }
 }

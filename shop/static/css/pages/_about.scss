@@ -2,79 +2,114 @@
 
 .about-wrapper {
     
+    width: auto;
+    margin: 0 5vw;
+    
+    section {
+        display: flex;
+        margin: 5vh 0;
+        justify-content: space-around;
+        position: relative;
+        flex-wrap: wrap;
+
+        a {
+            color: $green-primary;
+            transition: color .2s ease;
+            text-decoration: underline;
+            font-size: .9em;
+
+            &:hover {
+                color: $orange-primary;
+            }
+        }
+
+        .image {
+            position: relative;
+            width: 90vw;
+
+            img {
+                max-width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .text {
+            position: relative;
+            padding: 1em .4em;
+            width: 90vw;
+
+            table {
+                border-spacing: .5em;
+            }
+
+            ul {
+                margin-block-start: 1.1em;
+                margin-inline-start: 1.2em;
+            }
+        }
+
+        .design {
+
+            .front, .back {
+                display: block;
+                position: relative;
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+                transition: all .7s ease-in-out;
+            }
+            
+            .front {
+                z-index: 2
+            }
+            
+            .back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotateY(-180deg);
+            }
+
+            &:hover {
+
+                .front {
+                    transform: rotateY(180deg);
+                }
+
+                .back {
+                    transform: rotateY(0);
+                }
+            }
+        }
+    }
+
 
     @media only screen and (min-device-width:768px) {
-        width: auto;
-        margin: 0 5vw;
-        
-
         section {
-            display: flex;
-            margin: 5vh 0;
-            justify-content: space-around;
-            position: relative;
+            flex-wrap: nowrap;
+
+            a {
+                font-size: 1em;
+            }
 
             .image {
-                position: relative;
                 width: 45vw;
                 max-width: 650px;
-
-                img {
-                    max-width: 100%;
-                    object-fit: cover;
-                }
             }
 
             .text {
-                position: relative;
-                padding: 1em 2em;
                 width: 45vw;
                 max-width: 650px;
 
                 table {
                     border-spacing: 2em;
                 }
-
-                ul {
-                    margin-block-start: 1.1em;
-                    margin-inline-start: 1.2em;
-                }
             }
 
-            .text:nth-child(1) {
-                text-align: right;
-            }
+            &.reverse {
+                flex-direction: row-reverse;
 
-            .design {
-
-                .front, .back {
-                    display: block;
-                    position: relative;
-                    transform-style: preserve-3d;
-                    backface-visibility: hidden;
-                    transition: all .7s ease-in-out;
-                }
-                
-                .front {
-                    z-index: 2
-                }
-                
-                .back {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    transform: rotateY(-180deg);
-                }
-
-                &:hover {
-
-                    .front {
-                        transform: rotateY(180deg);
-                    }
-
-                    .back {
-                        transform: rotateY(0);
-                    }
+                .text {
+                    text-align: right;
                 }
             }
         }
