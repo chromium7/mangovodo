@@ -2,6 +2,7 @@ import weasyprint
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -16,6 +17,7 @@ from .forms import OrderCreateForm
 from .tasks import order_created
 
 
+@login_required
 def order_create(request):
     cart = Cart(request)
     coupon_form = CouponApplyForm()

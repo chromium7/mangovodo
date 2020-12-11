@@ -12,7 +12,8 @@
     <div class="register-wrapper">
         <div class="register-container">
             <div class="logo">
-                <a href="/"><img src="{% static 'img/logo-or.svg' %}" alt="Mangovodo"></a>
+                <a href="/" class='desktop'><img src="{% static 'img/logo-or.svg' %}" alt="Mangovodo"></a>
+                <a href="/" class='mobile'><img src="{% static 'img/logo-h-or.svg'%}" alt="Mangovodo"></a>
             </div>
             <div class="title">
                 <div class="subtitle">Register</div>
@@ -21,16 +22,10 @@
             <form action="{% url "shop:register" %}" method="post">
                 <div>{{ user_form.username.label_tag }}</div>
                 <div>{{ user_form.username }}</div>
-                <table>
-                    <tr>
-                        <td>{{ user_form.first_name.label_tag }}</td>
-                        <td>{{ user_form.last_name.label_tag }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ user_form.first_name }}</td>
-                        <td>{{ user_form.last_name }}</td>
-                    </tr>
-                </table>
+                <div>{{ user_form.first_name.label_tag }}</div>
+                <div>{{ user_form.first_name }}</div>
+                <div>{{ user_form.last_name.label_tag }}</div>
+                <div>{{ user_form.last_name }}</div>
                 <div>{{ user_form.email.label_tag }}</div>
                 <div>{{ user_form.email }}</div>
                 <div>{{ user_form.password.label_tag }}</div>

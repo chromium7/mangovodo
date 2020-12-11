@@ -1,17 +1,19 @@
 
 .login-wrapper {
 
-    @media only screen and (min-device-width:768px) {
-        max-height: 100vh;
-        max-width: 100vw;
+    max-height: 100vh;
+    max-width: 100vw;
+    
+    @media only screen and (min-device-width:768px) {    
         display:flex;
     }
 }
 
 .login-image {
-
+    display: none;
 
     @media only screen and (min-device-width:768px) {
+        display: block;
         width: 65vw;
         height: 100vh;
         position: relative;
@@ -37,62 +39,75 @@
 
 .login-container {
 
+    width: 100vw;
+    height: 100vh;
+    background: $brown-dark;
+    padding: 5% 15%;
+    text-align:center;
+    color: $light-primary;
+
+    .login-form {
+        width: fit-content;
+        margin: auto;
+    }
+
+    .title {
+        width: fit-content;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .subtitle {
+        text-align: left;
+        font-size: 2.4em;
+        margin: auto;
+    }
+
+    form {
+        text-align:left;
+        font-size: 1.2em;
+        margin: auto;
+        margin-top: .6em;
+        
+        p input {
+            display: block;
+            margin-bottom: .8em;
+        }
+
+        input[type='submit'] {
+            margin-top: .8em;
+        }
+
+        ul li {
+            color: red;
+            font-size: .8em;
+        }
+    }
+    
+    p {
+        text-align: left;
+
+        a {
+            color: $green-light;
+        }
+    }
 
     @media only screen and (min-device-width:768px) {
 
         width: 35vw;
         height: 100vh;
-        background: $brown-dark;
         padding: 5% 5%;
-        text-align:center;
-        color: $light-primary;
 
         .login-form {
             width: 60%;
-            margin:auto;
+            margin: auto;
         }
 
         .title {
-
-            img {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        .subtitle {
-            text-align: left;
-            font-size: 2.4em;
-            margin: auto;
-        }
-
-        form {
-            text-align:left;
-            font-size: 1.2em;
-            margin: auto;
-            margin-top: .6em;
-            
-            p input {
-                display: block;
-                margin-bottom: .8em;
-            }
-
-            input[type='submit'] {
-                margin-top: .8em;
-            }
-
-            ul li {
-                color: red;
-                font-size: .8em;
-            }
-        }
-        
-        p {
-            text-align: left;
-
-            a {
-                color: $green-light;
-            }
+            width: auto;
         }
     }
 }

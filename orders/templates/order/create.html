@@ -58,7 +58,7 @@
 <script>
     const addressChoices = document.querySelectorAll('input[type="radio"]');
     addressChoices.forEach(choice => choice.addEventListener('click', (e)=> {
-        e.target.parentElement.parentElement.style.background = '#F5BB08';
+        e.target.parentElement.parentElement.classList.toggle('selected');
     }));
 </script>
 {% endblock  %}

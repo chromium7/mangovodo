@@ -1,6 +1,171 @@
 
 .profile-wrapper {
 
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .left {
+        width: 30vw;
+        padding: 2em;
+        text-align: right;
+
+        h2 {
+            font-size: 6em;
+        }
+    }
+
+    .right {
+        width: 60vw;
+        padding-top: 2em;
+
+        .profile-menu {
+            background: rgba($color: $brown-dark, $alpha: .6);
+            width: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+
+            li {
+                flex: 1;
+                border: 1px solid $green-light;
+                height: 2.2em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $light-primary;
+                cursor: pointer;
+                transition: background .4s ease;
+            }
+        }
+
+        .sub-menu {
+            background: rgba($color: $brown-dark, $alpha: .6);
+            width: 50%;
+            margin-left: auto;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+
+            li {
+                flex: 1;
+                border: 1px solid $green-light;
+                height: 1.8em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $light-primary;
+                cursor: pointer;
+                transition: background .4s ease;
+            }
+        }
+
+        .profile-container {
+            position: relative;
+
+            .address-container {
+                display: none;
+                
+                #add-address {
+                    margin-top: 2em;
+                }
+            }
+
+            .purchases-container {
+                display: none;
+
+                .inner-purchases-container {
+                    
+                    .pending-container {
+                        display: none;
+                    }
+
+                    .completed-container {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    
+    .address-list {
+        li {
+            padding: 2em;
+            border: 1px solid $green-primary;
+
+            .delete {
+                float: right;
+                color: red;
+            }
+
+            table {
+                width: 100%;
+
+                thead {
+                    background: $brown-primary;
+                    color: $light-primary;
+                }
+
+                tr {
+                    background: rgba($color: $green-secondary, $alpha: .4);
+                    
+                    td {
+                        padding: .4em;
+                    }
+                }
+
+                tr:nth-child(odd) {
+                    background: rgba($color: $green-primary, $alpha: .4);
+                }
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: .6em;
+
+                .button {
+                    width: 35%;
+                    background: $green-primary;
+                    border: 1px solid $brown-primary;
+                    color: $light-primary;
+                    border-radius: 10px;
+                    padding: .25em;
+                    text-align: center;
+                }
+
+                .button-cancel {
+                    width: 35%;
+                    background: red;
+                    border: 1px solid $green-primary;
+                    color: $light-primary;
+                    border-radius: 10px;
+                    padding: .25em;
+                    text-align: center;
+                }
+            }
+
+            .purchase-completed {
+                text-transform: uppercase;
+                color: $green-secondary;
+                text-align: center;
+                font-size: 1.8em;
+            }
+        }
+    }
+
+    .active {
+        background: $brown-dark;
+    }
+
+    .cont-active {
+        display: block !important;
+    }
+
+
     @media only screen and (min-device-width:768px) {
         width: 90vw;
         margin: auto;
