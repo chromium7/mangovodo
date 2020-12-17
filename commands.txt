@@ -1,0 +1,22 @@
+docker exec -it postgres psql -U postgres
+
+docker-compose up / down
+
+POSTGRES
+========
+
+docker exec -it pgdb_mangovodo psql -U mangovodo
+\c <database_name>
+\d
+\d+ <table_name>
+\q
+
+
+DJANGO SERVER MIGRATION
+================
+
+docker ps
+docker exec -it django_mangovodo bash
+
+- python manage.py migrate
+- python manage.py collectstatic

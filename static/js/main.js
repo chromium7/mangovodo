@@ -28,9 +28,11 @@ right.forEach( (b) => {
 const profileButton = document.querySelector('.profile-button');
 const profileMenu = document.querySelector('.profile-menu');
 
-profileButton.addEventListener('click', () => {
-    profileMenu.classList.toggle('active');
-});
+if (profileButton) {
+    profileButton.addEventListener('click', () => {
+        profileMenu.classList.toggle('active');
+    });
+}
 
 const cartButton = document.querySelector('.cart');
 const cartOverlay = document.querySelector('.cart-overlay');

@@ -4,39 +4,46 @@
 
 .footer {
 
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background: $brown-primary;
+    color: $light-primary;
+    display: flex;
+    margin-top: 1.4em;
+    padding-bottom: 2em;
+
+    .left {
+        flex: 1;
+        text-align: left;
+        list-style-type: none;
+        justify-content: space-between;
+        padding-left: 5vw;
+
+        li {
+            display: inline-block;
+            margin-top: 1em;
+            margin-right: 2em;
+            
+            a {
+                color: $green-light;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .right {
+        margin-top: 1em;
+        margin-right: 5vw;
+        text-align: right;
+    }
 
     @media only screen and (min-device-width:768px) {
         position: absolute;
+        margin: 0;
         bottom: 0;
-        width: 100%;
+        padding: 0;
         height: 13vh;
-        background: $brown-primary;
-        color: $light-primary;
-        display: flex;
-
-        .left {
-            flex: 1;
-            text-align: left;
-            list-style-type: none;
-            justify-content: space-between;
-            padding-left: 5vw;
-
-            li {
-                display: inline-block;
-                margin-top: 1em;
-                margin-right: 2em;
-                
-                a {
-                    color: $green-light;
-                    text-decoration: none;
-                }
-            }
-        }
-
-        .right {
-            margin-top: 1em;
-            margin-right: 5vw;
-            text-align: right;
-        }
     }
 }

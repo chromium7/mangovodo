@@ -1,14 +1,36 @@
 
 .contact-wrapper{
 
+    width: auto;
+    margin-top: 5vh;
+    padding: 5vh 5vw;
+    background: url('../img/abstract-bg.svg');
+    background-size: cover;
+    height: auto;
+    font-size: 1em;
+    color: $light-primary;
+
+    table {
+        td {
+            padding-right: 1.4em;
+        }
+
+        input, textarea {
+            width: 55vw;
+        }
+
+        input[type='submit'] {
+            color: $light-primary;
+            background: $brown-dark;
+        }
+    }
+
     @media only screen and (min-device-width:768px) {
         width: auto;
         margin: 5vh 5vw;
-        background: url('../img/abstract-bg.svg');
-        background-size: cover;
+        padding: 0;
         height: 80vh;
         font-size: 1.1em;
-        color: $light-primary;
         
         .contact-form {
             position: absolute;
@@ -19,7 +41,7 @@
 
         .text {
             text-align:center;
-            margin: 5vh 0;
+            max-width: 400px;
         }
 
         table {
@@ -27,15 +49,9 @@
             padding: 2em;
             border-spacing: 2;
 
-            td {
-                padding-right: 1.4em;
-            }
-
-            input[type='submit'] {
-                color: $light-primary;
-                background: $brown-dark;
+            input, textarea {
+                width: auto;
             }
         }
     }
-
 }

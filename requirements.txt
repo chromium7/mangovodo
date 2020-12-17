@@ -17,6 +17,7 @@ django-memcache-status==2.2
 djangorestframework==3.11.0
 easy-thumbnails==2.7
 flower==0.9.3
+gunicorn==20.0.4
 html5lib==1.1
 idna==2.10
 importlib-metadata==3.0.0

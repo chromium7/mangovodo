@@ -1,0 +1,69 @@
+version: "3.8"
+
+services:
+  django_gunicorn:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    container_name: gunicorn_mangovodo
+    depends_on:
+      - pgdb
+      - redis
+    volumes:
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
+    environment:
+      - DJANGO_SETTINGS_MODULE=django_project.settings.production
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::-1]
+      - DJANGO_SUPERUSER_PASSWORD=password123
+      - DATABASE_NAME=mangovodo
+      - DATABASE_USER=mangovodo
+      - DATABASE_PASSWORD=mangovodo
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/usr/src/app/static
+      - media_volume:/usr/src/app/media
+    depends_on:
+      - django_gunicorn
+
+  celery:
+    build: .
+    command: celery -A django_project worker -l INFO
+    volumes:
+      - .:/usr/src/app/
+    environment:
+      - DJANGO_SETTINGS_MODULE=django_project.settings.production
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::-1]
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
+    depends_on:
+      - django_gunicorn
+      - redis
+
+  pgdb:
+    image: postgres
+    container_name: pgdb_mangovodo
+    environment:
+      - POSTGRES_DB=mangovodo
+      - POSTGRES_USER=mangovodo
+      - POSTGRES_PASSWORD=mangovodo
+    ports:
+      - 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+  redis:
+    image: "redis:alpine"
+
+volumes:
+  pgdata:
+  static_volume:
+  media_volume:
