@@ -15,7 +15,7 @@ services:
       - media_volume:/usr/src/app/media
     environment:
       - DJANGO_SETTINGS_MODULE=django_project.settings.production
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::-1]
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 mangovodo.com [::-1]
       - DJANGO_SUPERUSER_PASSWORD=password123
       - DATABASE_NAME=mangovodo
       - DATABASE_USER=mangovodo

@@ -3,6 +3,8 @@ from .base import *
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9azf@n#-u!+x+w0q-t1w%7avw!7+y(pb!uf&k=!#&+=x-9fk8+'
 
+ALLOWED_HOSTS = ['mangovodo.com']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

@@ -20,6 +20,10 @@
 - Activate virtual environment and start celery in the project directory
 - Activate virtual environment and run `python manage.py runserver`
 
+### or - Run with docker-compose (make sure docker is running)
+
+- docker-compose up --build
+
 ## Explanations
 
 The followings are the explanations for each file / folders displayed in the main directory of this repository.
@@ -33,6 +37,7 @@ The followings are the explanations for each file / folders displayed in the mai
 - **orders** : The orders app will process when a user place an order / purchase. It contains the asynchronous task for celery to run and save the informations on the products purchased into Redis for scoring.
 - **payment** : The payment app allows user to pay using their credit card by the use of Braintree payment gateway.
 - **accounts** : The account app allows user to add or remove their registered address. User can also check the purchases that they have made, either those that haven't been paid for or those that are already completed. User can pay or cancel the orders that are still pending.
+- **Dockerfile and docker-compose.yml** : Define the containers used in the projects, which includes Gunicorn, Nginx, Postgresql, Redis and Celery.
 
 ## CS50W complexity requirements:
 
